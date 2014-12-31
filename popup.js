@@ -11,10 +11,15 @@ function getImages(HTML) {
   // extracts page images to popup
   var imgCounter = 0;
   $('.UFICommentContentBlock', HTML).find('a[rel="theater"]').find("img").each( function() {
+      
+      var zoom = document.createElement('a');
+      document.body.appendChild(zoom);
+
+      // adds lightbox to images
       var img = document.createElement('img');
-      img.src = $(this).attr("src");
-      document.body.appendChild(img);
+      img.src = $(this).attr('src');
       imgCounter++;
+      zoom.innerHTML = '<a href="' + img.src + '"data-lightbox="Image">' + img.outerHTML + '</a>';
 
       // adds download button to images
       var button = document.createElement('button');
@@ -22,13 +27,13 @@ function getImages(HTML) {
       button.appendChild(document.createTextNode('Download'));
       document.body.appendChild(button);
       button.innerHTML = '<a href="' + img.src + '"download="' + 'Img' + imgCounter + '.jpg' + '">Download</a>';
-}
+    });
+  }
 
 function onWindowLoad() {
 
   var message = document.querySelector('#message');
 
-  // Get page source from active Chrome tab
   chrome.tabs.executeScript(null, {
     file: "getPagesSource.js"
   }, function() {
@@ -37,6 +42,7 @@ function onWindowLoad() {
       message.innerText = 'There was an error injecting script : \n' + chrome.extension.lastError.message;
     }
   });
+
 }
 
 window.onload = onWindowLoad;
