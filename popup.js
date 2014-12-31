@@ -1,13 +1,20 @@
 chrome.extension.onMessage.addListener(function(request, sender) {
-  // if received, display source in popup
+  // if received, get images from source
   if (request.action == "getSource") {
-    message.innerText = request.source;
+    var source = $.parseHTML(request.source);
+    getImages(source);
   }
 });
 
-//TODO: Implement getImages
 function getImages(HTML) {
   
+  // extracts page images to popup
+  var imgCounter = 0;
+  $('.UFICommentContentBlock', HTML).find('a[rel="theater"]').find("img").each( function() {
+      var img = document.createElement('img');
+      img.src = $(this).attr("src");
+      document.body.appendChild(img);
+      imgCounter++;
 }
 
 function onWindowLoad() {
