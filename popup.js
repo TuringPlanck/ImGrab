@@ -15,6 +15,13 @@ function getImages(HTML) {
       img.src = $(this).attr("src");
       document.body.appendChild(img);
       imgCounter++;
+
+      // adds download button to images
+      var button = document.createElement('button');
+      button.type = 'download';
+      button.appendChild(document.createTextNode('Download'));
+      document.body.appendChild(button);
+      button.innerHTML = '<a href="' + img.src + '"download="' + 'Img' + imgCounter + '.jpg' + '">Download</a>';
 }
 
 function onWindowLoad() {
