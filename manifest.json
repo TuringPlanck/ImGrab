@@ -10,5 +10,9 @@
     "default_popup": "popup.html"
   },
 
-  "permissions": ["tabs", "<all_urls>"]
+  "permissions": [
+  "tabs",
+  "<all_urls>"
+  "https://www.facebook.com"
+  ]
 }
