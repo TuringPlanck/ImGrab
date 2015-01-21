@@ -1,0 +1,27 @@
+body {
+min-width: 357px;
+overflow-x: hidden;
+}
+
+img {
+margin: 5px;
+border: 2px solid black;
+vertical-align: middle;
+width: 75px;
+height: 75px;
+}
+
+.circle {
+	border-radius: 50%;
+	width: 15px;
+	height: 15px;
+	background-color: #dcdcdc;
+	margin: 0px auto 10px auto;
+	padding: 0px 5px;\
+}
+
+#loading {
+	text-align: center;
+	color: #52cde7;
+	margin: auto;
+}

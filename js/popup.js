@@ -3,7 +3,14 @@ chrome.extension.onMessage.addListener(function(request, sender) {
   if (request.action == "getSource") {
     var source = $.parseHTML(request.source);
     getImages(source);
-    $('#message').remove();
+    $('#loading').remove();
+
+    // adds new window button
+    var button = document.createElement('button');
+    button.type = 'window';
+    button.appendChild(document.createTextNode('Window'));
+    document.body.appendChild(button);
+    button.innerHTML = '<a href="popup.html", target ="_blank">Window View</a>';
   }
 });
 
