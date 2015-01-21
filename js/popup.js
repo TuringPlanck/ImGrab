@@ -4,42 +4,50 @@ chrome.extension.onMessage.addListener(function(request, sender) {
     var source = $.parseHTML(request.source);
     getImages(source);
     $('#loading').remove();
-
-    // adds new window button
-    var button = document.createElement('button');
-    button.type = 'window';
-    button.appendChild(document.createTextNode('Window'));
-    document.body.appendChild(button);
-    button.innerHTML = '<a href="popup.html", target ="_blank">Window View</a>';
   }
 });
 
 function getImages(Page) {
   
-  // extracts page images to popup
-  var imgCounter = 0;
-  $('.UFICommentContentBlock', Page).find('a[rel="theater"]').each( function() {
-      
-      var zoom = document.createElement('a');
-      document.body.appendChild(zoom);
+  // if images are found
+  var images = $('.UFICommentContentBlock', Page).find('a[rel="theater"]');
+  if (images.length > 0) {
 
-      // adds lightbox to images
-      var img = document.createElement('img');
-      img.src = $(this).find("img").attr('src');
-      imgCounter++;
-      zoom.innerHTML = '<a href="' + img.src + '"data-lightbox="Image">' + img.outerHTML + '</a>';
+    // extract page images to popup
+    var imgCounter = 0;
+    images.each( function() {
+        
+        var zoom = document.createElement('a');
+        document.body.appendChild(zoom);
 
-      // gets download link for image
-      var downloader = getDownloader($(this).attr('href'));
+        // add lightbox to images
+        var img = document.createElement('img');
+        img.src = $(this).find("img").attr('src');
+        imgCounter++;
+        zoom.innerHTML = '<a href="' + img.src + '"data-lightbox="Image">' + img.outerHTML + '</a>';
 
-      // adds download button to images
-      var button = document.createElement('button');
-      button.type = 'download';
-      button.appendChild(document.createTextNode('Download'));
-      document.body.appendChild(button);
-      button.innerHTML = '<a href="' + downloader + '"download="' + 'Img' + imgCounter + '.jpg' + '">Download</a>';
-    });
+        // get download link for image
+        var downloader = getDownloader($(this).attr('href'));
+
+        // add download button to images
+        var button = document.createElement('button');
+        button.type = 'download';
+        button.appendChild(document.createTextNode('Download'));
+        document.body.appendChild(button);
+        button.innerHTML = '<a href="' + downloader + '"download="' + 'Img' + imgCounter + '.jpg' + '">Download</a>';
+      });
   }
+  
+  else { // no images found
+    
+    // apologize to user
+    $('#loading').remove();
+    var apologize = document.createElement("div");
+    apologize.id = "apologize";
+    document.body.appendChild(apologize);
+    apologize.innerHTML = '<p>no images found</p>';
+  }
+}
 
 function getDownloader(url) {
   var result = null;
