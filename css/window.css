@@ -1,3 +1,10 @@
+#dropZone {
+    border: 3px dashed black;
+    width: 200px;
+    height: 100px;
+       
+}
+
 body {
 min-width: 357px;
 overflow-x: hidden;
