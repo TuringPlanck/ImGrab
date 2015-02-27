@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Your Images</title>
+    <link rel="shortcut icon" href="../img/icon.png" >
     <script src="../Lightbox/js/jquery-1.11.0.min.js"></script>
     <script src="../Lightbox/js/lightbox.min.js"></script>
     <link href="../Lightbox/css/lightbox.css" rel="stylesheet" />
@@ -10,12 +11,14 @@
   </head>
 
   <body>
+      
+
       <div id ="display">
       </div>
       <div id="dropZone">
-          <a id="downloadAll" href="#">Download Images</a></span><br>
+          <div id="downloadAll" class="btn">Download Images</div>
+          <div id="images" temp-placeholder="Drag and Drop Images"></div>
       </div>
-      <div id="images">
-      </div>
+      
   </body>
 </html>

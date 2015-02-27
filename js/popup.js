@@ -37,7 +37,7 @@ chrome.extension.onMessage.addListener(function(request, sender) {
 function addNewWindow() {
   // adds new window button
   var button = document.createElement('div');
-  button.type = 'window';
+  button.id = 'window_btn';
   document.body.appendChild(button);
   button.innerHTML = '<a href="window.html", target ="_blank">Window View</a>';
 }

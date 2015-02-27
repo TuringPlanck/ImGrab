@@ -11,6 +11,11 @@ width: 75px;
 height: 75px;
 }
 
+img:hover {
+	border-width: 3px;
+	margin: 2px 6px 2px 2px;
+}
+
 #loading {
 	text-align: center;
 	color: #52cde7;
@@ -21,4 +26,32 @@ height: 75px;
 	text-align: center;
 	color: #ff4444;
 	margin: auto;
+}
+
+#window_btn {
+	border-style: solid;
+	border-width: 3px;
+	border-radius: 2px;
+	border-color: #122651;
+	color: #ffffff;
+	background: linear-gradient(#4b67a1, #2f477a);
+	width: 90px;
+	text-align: center;
+	font-weight: bold;
+}
+
+#window_btn:hover {
+	background: linear-gradient(#2f477a, #4b67a1);
+}
+
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	color: #ffffff;
+}
+
+a:link {
+	color: #B9C9F0;
 }
