@@ -1,15 +1,16 @@
-function getImages(HTML) {
+var getImages = function(HTML) {
 
-  var img_src = [];
-  var images = $('.UFICommentContentBlock').find('a[rel="theater"]');
+  var img_src, images, imgCounter, downloader;
+  img_src = [];
+  images = $('.UFICommentContentBlock').find('a[rel="theater"]');
 
   if (images.length > 0) { // images are found
 
-    var imgCounter = 0;
+    imgCounter = 0;
     images.each( function() { 
 
       // get download link
-      var downloader = getDownloader($(this).attr('href'));
+      downloader = getDownloader($(this).attr('href'));
       img_src.push(downloader);
 
     });
@@ -17,9 +18,10 @@ function getImages(HTML) {
   return img_src;
 }
 
-function getDownloader(url) {
+var getDownloader = function(url) {
   
-  var result = null;
+  var result, HTML, downloader;
+  result = null;
   
   $.ajax({
     url: url,
@@ -31,8 +33,8 @@ function getDownloader(url) {
     }
   });
 
-  var HTML = $.parseHTML(result);
-  var downloader = $('.fbPhotoImage', HTML).attr('src');
+  HTML = $.parseHTML(result);
+  downloader = $('.fbPhotoImage', HTML).attr('src');
   return downloader;
 }
 

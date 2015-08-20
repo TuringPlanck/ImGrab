@@ -1,11 +1,12 @@
 function onWindowLoad() {
 	// pull images from chrome storage
 	chrome.storage.local.get(null, function(result){
+		var i, lightbox, display;
 		for(i = 0; i < result['src'].length; i++) {
 
-		  var lightbox = document.createElement('a');
+		  lightbox = document.createElement('a');
 	      
-	      var display = document.createElement('img');
+	      display = document.createElement('img');
 	      display.src = result['src'][i];
 	      display.className = "image-display";
 
@@ -20,27 +21,30 @@ function onWindowLoad() {
 	dropZone.addEventListener('dragover', handleDragOver, false);
 	dropZone.addEventListener('drop', drop, false);
 	$('#downloadAll').click(function() {
-      $('a.selected > img').each(function() {
+      $('a.selected').children().each(function() {
         $(this).trigger( "click" );
       });
   	});
 }
 
-function handleDragOver(evt) {
+var handleDragOver = function (evt) {
 	evt.stopPropagation();
 	evt.preventDefault();
 	evt.dataTransfer.dropEffect = 'copy'; 
 }
 
 var imgCounter = 0;
-function drop(evt) {
+var drop = function(evt) {
+	
+	var imageUrl, link, display, downloader;
+
 	evt.stopPropagation();
 	evt.preventDefault(); 
 	imgCounter++;
-	var imageUrl = evt.dataTransfer.getData('URL');
-	var link = '<a href="' + imageUrl + '"download="' + 'Img_' + imgCounter + '.jpg' + '" class="selected">';
-	var display = '<img src="' + imageUrl + '" class="img-drop">';
-	var downloader = link + display + '</a>';
+	imageUrl = evt.dataTransfer.getData('URL');
+	link = '<a href="' + imageUrl + '"download="' + 'Img_' + imgCounter + '.jpg' + '" class="selected">';
+	display = '<img src="' + imageUrl + '" class="img-drop">';
+	downloader = link + display + '</a>';
 	$('#images').append(downloader);
 }
 

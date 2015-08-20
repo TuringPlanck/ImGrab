@@ -1,15 +1,14 @@
 chrome.extension.onMessage.addListener(function(request, sender) {
   if (request.action == "getImages") { 
     images = request.source;
+
+    var i, img_counter, link, display, apologize;
     if (images.length > 0) { // images found
-      var loading = document.getElementById("loading");
-      var img_counter = 0;
-      for(i = 0; i < images.length; i++) {
+      for(i = 0, img_counter = 1; i < images.length; i++, img_counter++) {
 
-        var link = document.createElement('a');
-        img_counter++;
+        link = document.createElement('a');
+        display = document.createElement('img');
 
-        var display = document.createElement('img');
         display.src = images[i];
         display.className = "image-display";
 
@@ -23,10 +22,9 @@ chrome.extension.onMessage.addListener(function(request, sender) {
     }    
     else { // no images found
       
-      var loading = document.getElementById("loading");
       loading.parentNode.removeChild(loading);
 
-      var apologize = document.createElement("div");
+      apologize = document.createElement("div");
       apologize.id = "apologize";
       document.body.appendChild(apologize);
       apologize.innerHTML = '<p>no images found</p>';
@@ -34,7 +32,7 @@ chrome.extension.onMessage.addListener(function(request, sender) {
   }
 });
 
-function addNewWindow() {
+var addNewWindow = function() {
   // adds new window button
   var button = document.createElement('div');
   button.id = 'window_btn';
@@ -44,15 +42,14 @@ function addNewWindow() {
 
 function onWindowLoad() {
 
-  var message = document.querySelector('#loading');
-
+  var loading = document.getElementById('loading');
   // inject content script to find images
   chrome.tabs.executeScript(null, {
     file: "/lightbox/js/jquery-1.11.0.min.js"
   }, function() {
     // If you try and inject into an extensions page or the webstore/NTP you'll get an error
     if (chrome.extension.lastError) {
-      message.innerText = 'There was an error injecting script : \n' + chrome.extension.lastError.message;
+      loading.innerText = 'There was an error injecting script : \n' + chrome.extension.lastError.message;
     }
     else {
       chrome.tabs.executeScript(null, {
