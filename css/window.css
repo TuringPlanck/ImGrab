@@ -39,7 +39,6 @@ height: 200px;
 
 .btn {
 	
-	background-color: #f4f5d3;
 	background: linear-gradient(#f4f5d3 , #9c9d86);
 	color: #708d87;
 	margin: 2px;
@@ -54,7 +53,6 @@ height: 200px;
 }
 
 .btn:hover {
-	background-color: #5e6061;
 	background: linear-gradient(#5e6061 , #1d1f20);
 }
 

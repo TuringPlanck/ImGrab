@@ -28,30 +28,25 @@ img:hover {
 	margin: auto;
 }
 
-#window_btn {
+#window_btn, #download_btn {
 	border-style: solid;
 	border-width: 3px;
 	border-radius: 2px;
 	border-color: #122651;
+	margin: 2px 2px 2px 2px;
 	color: #ffffff;
 	background: linear-gradient(#4b67a1, #2f477a);
 	width: 90px;
 	text-align: center;
 	font-weight: bold;
+	display: inline-block;
 }
 
-#window_btn:hover {
+#window_btn:hover, #download_btn:hover {
 	background: linear-gradient(#2f477a, #4b67a1);
 }
 
 a {
 	text-decoration: none;
-}
-
-a:visited {
 	color: #ffffff;
-}
-
-a:link {
-	color: #B9C9F0;
 }
