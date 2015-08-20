@@ -4,7 +4,7 @@
   "name": "ImGrab",
   "description": "This extension grabs images from Facebook Comments",
   "author": "Logan Martel",
-  "version": "1.0.3",
+  "version": "1.1.0",
 
   "icons": { 
     "16": "img/icon16.png",
