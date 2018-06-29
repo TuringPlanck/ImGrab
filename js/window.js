@@ -1,3 +1,13 @@
+/**
+ *
+ * @license GNU General Public License v3.0, https://www.gnu.org/licenses/gpl-3.0.en.html
+ * @version 1.0.3
+ * @author  Logan Martel, https://github.com/martelogan
+ * @updated 2018-06-28
+ * @link    https://github.com/martelogan-legacy-projects/ImGrab
+ *
+ *
+ */
 function onWindowLoad() {
 	// pull images from chrome storage
 	chrome.storage.local.get(null, function(result){

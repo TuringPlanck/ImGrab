@@ -1,3 +1,8 @@
+/*
+Copyright (c) 2014, Logan Martel
+This file is distributed under the GPL v3 license.
+Please refer to the LICENSE file for a copy of the license.
+*/
 #dropZone {
     display: inline-block;
     background-color: rgba(76,194,255,0.4);
@@ -10,15 +15,14 @@
 }
 
 body {
-min-width: 357px;
-overflow-x: hidden;
-background-color: #b4c1c5;
+	min-width: 357px;
+	overflow-x: hidden;
+	background-color: #b4c1c5;
 }
 
 img {
-width: 200px;
-height: 200px;
-
+	width: 200px;
+	height: 200px;
 }
 
 .image-display {

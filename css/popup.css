@@ -1,14 +1,19 @@
+/*
+Copyright (c) 2014, Logan Martel
+This file is distributed under the GPL v3 license.
+Please refer to the LICENSE file for a copy of the license.
+*/
 body {
-min-width: 357px;
-overflow-x: hidden;
+	min-width: 357px;
+	overflow-x: hidden;
 }
 
 img {
-margin: 5px;
-border: 2px solid black;
-vertical-align: middle;
-width: 75px;
-height: 75px;
+	margin: 5px;
+	border: 2px solid black;
+	vertical-align: middle;
+	width: 75px;
+	height: 75px;
 }
 
 img:hover {
